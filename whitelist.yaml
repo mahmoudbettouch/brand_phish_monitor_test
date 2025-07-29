@@ -1,0 +1,33 @@
+# Whitelist Configuration
+# Domains listed here will be ignored by the detection system
+
+whitelist:
+  # Your own company domains (to avoid false positives)
+  - 'yourcompany.com'
+  - 'yourcompany.net'
+  - 'yourcompany.org'
+  - 'yourcompany.io'
+  
+  # Legitimate CDN and cloud services
+  - 'cloudfront.net'
+  - 'amazonaws.com'
+  - 'azure.com'
+  - 'googleapis.com'
+  - 'gstatic.com'
+  - 'cloudflare.com'
+  - 'fastly.com'
+  - 'akamai.com'
+  - 'jsdelivr.net'
+  - 'unpkg.com' 
+
+  - 'facebook.com'
+  - 'instagram.com'
+  - 'twitter.com'
+  - 'linkedin.com'
+  - 'youtube.com'
+  - 'tiktok.com'
+  - 'snapchat.com'
+  - 'discord.com'
+  - 'slack.com'
+  - 'zoom.us'
+  - 'apple.com'

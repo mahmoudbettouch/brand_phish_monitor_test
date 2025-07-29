@@ -1,0 +1,18 @@
+webserver:
+  listen_addr: "127.0.0.1"
+  listen_port: 8080
+  full_url: "/full-stream"
+  lite_url: "/"
+  domains_only_url: "/domains-only"
+  cert_path: ""
+  cert_key_path: ""
+
+prometheus:
+  enabled: false
+  listen_addr: "0.0.0.0"
+  listen_port: 8080
+  metrics_url: "/metrics"
+  expose_system_metrics: false
+  real_ip: false
+  whitelist:
+    - "127.0.0.1/8"

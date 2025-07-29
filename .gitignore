@@ -1,0 +1,5 @@
+# Ignore downloaded binary and logs
+bin/certstream-server-go
+bin/nohup.out
+bin/nohup.err
+*.log

@@ -1,0 +1,39 @@
+# Brand Protection Phishing Catcher Configuration
+# Copy this file and customize for your environment
+
+# Certstream connection
+certstream_url: 'ws://127.0.0.1:8080'
+
+# File paths
+files:
+  brands_yaml: 'brands.yaml'              # Brands/companies to monitor
+  whitelist_yaml: 'whitelist.yaml'        # Domains to ignore
+  log_file: 'brand_alerts_{date}.log'     # {date} will be replaced with current date
+  stats_file: 'detection_stats.json'      # Runtime statistics
+
+# SMTP Configuration for email notifications
+smtp:
+  enabled: false
+  server: 'smtp.gmail.com'                      # Your SMTP server (could be localhost, mail.yourcompany.com, etc.)
+  port: 465                                 # Standard SMTP port (25, 587, or 2525)
+  use_tls: true                          # Set to false for basic SMTP
+  use_auth: true                         # Set to false for no authentication
+  username: ''                            # Leave empty if no auth
+  password: ''                            # Leave empty if no auth
+  sender: ''      # From address
+  recipients:
+    - 'destinartion@email.com'
+  subject_template: '🎯 Brand Alert: {domain} targets {brand} (Similarity: {score}%)'
+
+# Cooldown settings to prevent email spam
+cooldown:
+  enabled: true
+  domain_cooldown: 3600           
+  max_emails_per_hour: 15    # Maximum emails sent per hour
+
+# Brand protection detection settings
+detection:
+  min_score: 90         # Minimum score % to trigger alert
+  suspicious_tld_bonus: 10   # Extra points for suspicious TLDs (.top, .tk, etc.)
+  exact_match_bonus: 30      # Bonus points when brand name appears exactly in domain
+  typo_threshold: 85         # Similarity % threshold for high-risk typosquatting alerts

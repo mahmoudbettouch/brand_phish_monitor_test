@@ -1,0 +1,11 @@
+# Brands/Companies to Monitor for Typosquatting
+# Add your company name and other brands you want to protect
+
+brands:
+  - 'facebook'
+  - 'airbnb'
+
+  # Add your company/brands here:
+  - 'yourcompany'
+  - 'yourbrand'
+  # - 'yourproduct'

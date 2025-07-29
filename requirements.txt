@@ -1,0 +1,6 @@
+certstream==1.12
+python_Levenshtein==0.27.1
+PyYAML==6.0.2
+termcolor==3.1.0
+tld==0.13.1
+tqdm==4.67.1
