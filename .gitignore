@@ -3,3 +3,4 @@ bin/certstream-server-go
 bin/nohup.out
 bin/nohup.err
 *.log
+*.pyc
