@@ -1,4 +1,5 @@
 certstream==1.12
+fuzzywuzzy==0.18.0
 python_Levenshtein==0.27.1
 PyYAML==6.0.2
 termcolor==3.1.0

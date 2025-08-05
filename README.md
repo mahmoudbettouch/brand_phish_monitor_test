@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ### 1. Start the CertStream server:
 
 ```bash
-./bin/start_certstream.sh
+./start_certstream.sh
 ```
 
 It runs on ws://127.0.0.1:8080.
