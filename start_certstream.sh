@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Certstream Server Setup Script
+# Certstream Server Start Script
 set -e
+
+BINARY_NAME="certstream-server-go_1.4.0_linux_amd64"
+DOWNLOAD_URL="https://github.com/d-Rickyy-b/certstream-server-go/releases/download/v1.4.0/$BINARY_NAME"
 
 echo "Setting up Certstream Server..."
 
@@ -9,16 +12,19 @@ echo "Setting up Certstream Server..."
 mkdir -p ./bin
 cd ./bin
 
-# Download the certstream server binary
-echo "Downloading certstream server binary..."
-wget -nv "https://github.com/d-Rickyy-b/certstream-server-go/releases/download/v1.4.0/certstream-server-go_1.4.0_linux_amd64"
+# Check if binary exists, download if not
+if [[ ! -f "$BINARY_NAME" ]]; then
+    echo "Binary not found. Downloading certstream server binary..."
+    wget -nv "$DOWNLOAD_URL"
+    chmod u+x "$BINARY_NAME"
+else
+    echo "Binary already exists: $BINARY_NAME"
+fi
 
-# Make the binary executable
-chmod u+x ./certstream-server-go_1.4.0_linux_amd64
-
-# Create the config.yaml file
-echo "Creating config.yaml..."
-cat > ./config.yaml <<EOL
+# Create the config.yaml file if it doesn't exist
+if [[ ! -f "./config.yaml" ]]; then
+    echo "Creating config.yaml..."
+    cat > ./config.yaml <<EOL
 webserver:
   listen_addr: "127.0.0.1"
   listen_port: 8080
@@ -38,10 +44,13 @@ prometheus:
   whitelist:
     - "127.0.0.1/8"
 EOL
+else
+    echo "config.yaml already exists."
+fi
 
 # Start the certstream server in the background
 echo "Starting certstream server from $(pwd)..."
-nohup ./certstream-server-go_1.4.0_linux_amd64 > nohup.out 2> nohup.err < /dev/null &
+nohup ./"$BINARY_NAME" > nohup.out 2> nohup.err < /dev/null &
 
 # Store the PID for later reference
 SERVER_PID=$!
